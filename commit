@@ -43,7 +43,4 @@ SUMMARY=$(gum input --cursor.foreground "#5fd7d7" --value "$COMMIT_TYPE$SCOPE: "
 DESCRIPTION=$(gum write --cursor.foreground "#5fd7d7" --placeholder "Details of this change (CTRL+D to finish)")
 
 # Commit these changes
-gum confirm "Commit changes?" --selected.background="80" && git commit -m "$SUMMARY" -m "$DESCRIPTION"
-echo
-echo -e "${Bold_Green}Successfully Commit${Color_Off}"
-echo
+gum confirm "Commit changes?" --selected.background="80" && git commit -m "$SUMMARY" -m "$DESCRIPTION" && (echo -e "${Bold_Green}Successfully Commit${Color_Off}")
