@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# check is curl installed or not
+if ! command -v curl &> /dev/null
+then
+    echo "commit uses curl for downloading files, please install curl and try again"
+    exit
+fi
+
 # Reset
 Color_Off=''
 
@@ -53,21 +60,21 @@ success() {
     echo -e "${Bold_Breen}$@ ${Color_Off}"
 }
 
-bold_success 
+bold_success
 bold_success █▀▀ █▀█ █▀▄▀█ █▀▄▀█ █ ▀█▀
 bold_success █▄▄ █▄█ █░▀░█ █░▀░█ █ ░█░
-bold_success 
+bold_success
 
-echo 
+echo
 echo -e "${Yellow}Commit${Color_Off} helps in better git experience and maintain proper commit messages."
 info "Commit uses gum for styling prompts."
-echo 
+echo
 
 GUM_INSTALL_SETTING=$(echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list)
 GUM_INSTALL_LOG=$(sudo apt-get install gum)
 GUM_VERSION=$(gum -v)
 
-gum spin --spinner dot --title "Downloading gum..." --spinner.foreground="80" -- sleep 5 && echo -e "$GUM_VERSION downloaded. ${Cyan}https://github.com/charmbracelet/gum${Color_Off}"
+gum spin --spinner dot --title "Downloading gum..." --spinner.foreground="80" -- sleep 5 && echo -e "$GUM_VERSION downloaded. ${Cyan}https://github.com/charmbracelet/gum${Color_Off}" || exit 1
 
 commit_uri=https://raw.githubusercontent.com/KunalSin9h/commit/master/commit
 
@@ -84,14 +91,14 @@ if [[ ! -d $bin_dir ]]; then
 fi
 
 curl -fsSL --fail --location --output "$sh" "$commit_uri" ||
-    echo -e  "${Red}Failed${Color_Off} to download commit from ${Cyan}\"$commit_uri\"${Color_Off}"
+    echo -e  "${Red}Failed${Color_Off} to download commit from ${Cyan}\"$commit_uri\"${Color_Off}" && exit 1
 
 gum spin --spinner dot --title "Downloading commit..." --spinner.foreground="80" -- sleep 5  && echo -e "commit version v0.0.1 (.) downloaded. ${Cyan}https://github.com/KunalSin9h/commit${Color_Off}"
 
-gum spin --spinner dot --title "Setting Up..." --spinner.foreground="80" -- sleep 3 
+gum spin --spinner dot --title "Setting Up..." --spinner.foreground="80" -- sleep 3
 
 chmod +x "$sh" ||
-    error 'Failed to set permissions on commit executable'
+    error 'Failed to set permissions on commit executable' && exit 1
 
 tildify() {
     if [[ $1 = $HOME/* ]]; then
@@ -103,7 +110,7 @@ tildify() {
     fi
 }
 
-echo 
+echo
 success "commit was installed successfully to $Bold_Green$(tildify "$sh")"
 
 refresh_command=''
