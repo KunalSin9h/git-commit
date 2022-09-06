@@ -1,7 +1,6 @@
 # commit
 Git commit simulator using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) conventions.
 
-
 ## Installation
 ### Debian/Ubuntu
 ```bash
@@ -14,7 +13,8 @@ export PATH="$COMMIT_INSTALL/bin:$PATH"
 ```
 
 ## Usage
-Go to your project directory and run `commit` command.
+Go to your project directory, stage your changes and run `commit` command.
+> Note: commit command will also prompt to stage your changes.
 ```bash
 $ cd my-project
 $ commit
