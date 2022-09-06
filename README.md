@@ -1,6 +1,8 @@
 # commit
 Git commit simulator using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) conventions.
 
+![demo](https://user-images.githubusercontent.com/82411321/188562957-5b54ac73-ae61-43a0-9735-233bcb1405c3.gif)
+
 ## Installation
 ### Debian/Ubuntu
 ```bash
