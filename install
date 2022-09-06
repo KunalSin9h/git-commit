@@ -69,7 +69,7 @@ GUM_VERSION=$(gum -v)
 
 gum spin --spinner dot --title "Downloading gum..." --spinner.foreground="80" -- sleep 5 && echo -e "$GUM_VERSION downloaded. ${Cyan}https://github.com/charmbracelet/gum${Color_Off}"
 
-commit_uri=https://kunalsin9h.dev/commit
+commit_uri=https://raw.githubusercontent.com/KunalSin9h/commit/master/commit
 
 install_env=COMMIT_INSTALL
 bin_env=\$$install_env/bin
