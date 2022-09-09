@@ -4,7 +4,51 @@ Git commit simulator using [Conventional Commits](https://www.conventionalcommit
 ![demo](https://user-images.githubusercontent.com/82411321/188562957-5b54ac73-ae61-43a0-9735-233bcb1405c3.gif)
 
 ## Installation
-### Debian/Ubuntu
+### Install [gum](https://github.com/charmbracelet/gum#installation) first.
+
+<details>
+<summary> Install gum </summary>
+
+Use a package manager:
+
+```bash
+# macOS or Linux
+brew install gum
+
+# Arch Linux (btw)
+pacman -S gum
+
+# Nix
+nix-env -iA nixpkgs.gum
+
+# Debian/Ubuntu
+echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list
+sudo apt update && sudo apt install gum
+
+# Fedora
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=0' | sudo tee /etc/yum.repos.d/charm.repo
+sudo yum install gum
+```
+
+Or download it:
+
+* [Packages](https://github.com/charmbracelet/gum/releases) are available in Debian and RPM formats
+* [Binaries](https://github.com/charmbracelet/gum/releases) are available for Linux, macOS, and Windows
+
+Or just install it with `go`:
+
+```bash
+go install github.com/charmbracelet/gum@latest
+```
+</details>
+
+<br>
+
+### macOS x64 & Silicon, Linux x64, Windows Subsystem for Linux
 ```bash
 curl -fsSL https://kunalsin9h.dev/commit | bash
 ```
