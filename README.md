@@ -60,7 +60,7 @@ export PATH="$COMMIT_INSTALL/bin:$PATH"
 
 ### Docker (Linux x64)
 ```bash
-$ docker pull kunalsin9h/commit
+docker pull kunalsin9h/commit
 ```
 
 ## Usage
