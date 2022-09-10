@@ -65,15 +65,9 @@ bold_success █▄▄ █▄█ █░▀░█ █░▀░█ █ �
 bold_success
 
 echo -e "${Yellow}Commit${Color_Off} helps in better git experience and maintain proper commit messages."
-info "Commit uses gum for styling prompts."
+echo -e "Commit uses gum for styling prompts, ${Magenta}make sure you have installed gum${Color_Off} before proceeding. ${Cyan}https://github.com/charmbracelet/gum#installation${Color_Off}"
 echo
 info "Installing commit..."
-
-REQUIRED_PKG="gum"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG | grep "install ok installed")
-if [ "" == "$PKG_OK" ]; then
-    error "Please install gum first. ${Cyan}https://github.com/KunalSin9h/commit#installation${Color_Off}"
-fi
 
 commit_uri=https://raw.githubusercontent.com/KunalSin9h/commit/master/commit
 
