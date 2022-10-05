@@ -32,6 +32,43 @@ if [[ -t 1 ]]; then
     Bold_White='\033[1m'    # Bold White
 fi
 
+# commit intall path
+INSTALL="$HOME/.commit/bin/commit"
+
+# Current Version of commit
+CURRENT_RELEASE="v0.1.0"
+
+# get latest release from github
+LATEST_RELEASE=$(curl -s https://api.github.com/repos/KunalSin9h/commit/releases/latest | grep "tag_name" | cut -d '"' -f 4)
+
+# upgrate to latest version on --upgrade
+if [[ $1 == "--upgrade" || $1 == "-u" ]]; then
+    echo -e "${Bold_White}Upgrading${Color_Off} commit ($CURRENT_RELEASE -> $LATEST_RELEASE)"
+    curl -s https://raw.githubusercontent.com/KunalSin9h/commit/$LATEST_RELEASE/commit > $INSTALL
+    echo -e "${Bold_Green}Successfully Upgraded${Color_Off}"
+    exit 0
+fi
+
+if [[ $1 == "--version" || $1 == "-v" ]]; then
+    echo -e "${Bold_White}commit${Color_Off} $CURRENT_RELEASE"
+    exit 0
+fi
+
+if [[ $1 == "--help" || $1 == "-h" ]]; then
+    echo -e "${Bold_White}commit${Color_Off} $CURRENT_RELEASE"
+    echo -e "${Bold_White}Usage:${Color_Off} commit [options]"
+    echo -e "${Bold_White}Options:${Color_Off}"
+    echo -e "  -h, --help\t\t\tShow this help message"
+    echo -e "  -v, --version\t\t\tShow commit version"
+    echo -e "  -u, --upgrade\t\t\tUpgrade commit to latest version"
+    exit 0
+fi
+
+if [[ $CURRENT_RELEASE != $LATEST_RELEASE ]]; then
+    echo "Update available ($CURRENT_RELEASE -> $LATEST_RELEASE)"
+    echo -e "${Bold_White}commit --upgrade${Color_Off} to install latest version"
+fi
+
 gum confirm "Do you want to stage changes? (git add .)" --selected.background="80" && git add . && echo -e "${Bold_Green}Changes staged"
 
 COMMIT_TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert" --cursor.foreground "#5fd7d7")
