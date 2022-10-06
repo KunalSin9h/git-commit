@@ -64,6 +64,12 @@ docker pull kunalsin9h/commit
 ```
 
 ## Usage
+```bash
+$ commit -h
+# or
+$ commit --help
+```
+
 Go to your project directory, stage your changes and run `commit` command.
 > Note: commit command will also prompt to stage your changes.
 ```bash
