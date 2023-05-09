@@ -52,10 +52,16 @@ go install github.com/charmbracelet/gum@latest
 ```bash
 curl -s https://kunalsin9h.dev/commit | bash
 ```
+
 After Installing, add the following to your `.bashrc` file
 ```bash
 export COMMIT_INSTALL="$HOME/.commit"
 export PATH="$COMMIT_INSTALL/bin:$PATH"
+```
+
+## From Arch User Repository (AUR)
+```bash
+yay -S git-commit
 ```
 
 ### Docker (Linux x64)
