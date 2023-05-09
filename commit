@@ -36,7 +36,7 @@ fi
 INSTALL="$HOME/.commit/bin/commit"
 
 # Current Version of commit
-CURRENT_RELEASE="v0.1.0"
+CURRENT_RELEASE="v0.1.1"
 
 # get latest release from github
 LATEST_RELEASE=$(curl -s https://api.github.com/repos/KunalSin9h/git-commit/releases/latest | grep "tag_name" | cut -d '"' -f 4)
