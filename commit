@@ -39,7 +39,7 @@ INSTALL="$HOME/.commit/bin/commit"
 CURRENT_RELEASE="v0.1.0"
 
 # get latest release from github
-LATEST_RELEASE=$(curl -s https://api.github.com/repos/KunalSin9h/commit/releases/latest | grep "tag_name" | cut -d '"' -f 4)
+LATEST_RELEASE=$(curl -s https://api.github.com/repos/KunalSin9h/git-commit/releases/latest | grep "tag_name" | cut -d '"' -f 4)
 
 # upgrate to latest version on --upgrade
 if [[ $1 == "--upgrade" || $1 == "-u" ]]; then
@@ -47,7 +47,7 @@ if [[ $1 == "--upgrade" || $1 == "-u" ]]; then
         echo -e "${Bold_White}You are already using the latest version of commit${Color_Off} (Which is $CURRENT_RELEASE)"
     else
         echo -e "${Bold_White}Upgrading${Color_Off} commit ($CURRENT_RELEASE -> $LATEST_RELEASE)"
-        curl -s https://raw.githubusercontent.com/KunalSin9h/commit/$LATEST_RELEASE/commit > $INSTALL
+        curl -s https://raw.githubusercontent.com/KunalSin9h/git-commit/$LATEST_RELEASE/commit > $INSTALL
         echo -e "${Bold_Green}Successfully Upgraded${Color_Off}"
     fi
     exit 0
