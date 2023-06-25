@@ -77,7 +77,11 @@ if [[ $CURRENT_RELEASE != $LATEST_RELEASE ]]; then
     echo -e "${Bold_White}commit --upgrade${Color_Off} to install latest version"
 fi
 
-gum confirm "Do you want to stage changes? (git add .)" --selected.background="80" && git add . && echo -e "${Bold_Green}Changes staged"
+SIGNED_OFF_BY=""
+
+gum confirm "Do you want to stage changes? (git add .)" --selected.background="80" && git add . && echo -e "${Bold_Green}Changes staged${Color_Off}"
+
+gum confirm "Do you want to add Signed-off-by in commit body?" --selected.background="80" && SIGNED_OFF_BY="-s"
 
 COMMIT_TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert" --cursor.foreground "#5fd7d7")
 SCOPE=$(gum input --cursor.foreground "#5fd7d7" --placeholder "scope")
@@ -90,4 +94,4 @@ SUMMARY=$(gum input --cursor.foreground "#5fd7d7" --value "$COMMIT_TYPE$SCOPE: "
 DESCRIPTION=$(gum write --cursor.foreground "#5fd7d7" --placeholder "Details of this change (CTRL+D to finish)")
 
 # Commit these changes
-gum confirm "Commit changes?" --selected.background="80" && git commit -m "$SUMMARY" -m "$DESCRIPTION" && echo -e "${Bold_Green}Successfully Commit Changes${Color_Off}"
+gum confirm "Commit changes?" --selected.background="80" && git commit $SIGNED_OFF_BY -m "$SUMMARY" -m "$DESCRIPTION" && echo -e "${Bold_Green}Successfully Commit Changes${Color_Off}"
