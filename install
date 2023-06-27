@@ -69,10 +69,10 @@ echo -e "Commit uses gum for styling prompts, ${Magenta}make sure you have insta
 echo
 info "Installing commit..."
 
-commit_uri=https://raw.githubusercontent.com/KunalSin9h/commit/master/commit
+commit_uri=https://raw.githubusercontent.com/KunalSin9h/git-commit/master/commit
 
 # get latest release from github
-LATEST_RELEASE=$(curl -s https://api.github.com/repos/KunalSin9h/commit/releases/latest | grep "tag_name" | cut -d '"' -f 4)
+LATEST_RELEASE=$(curl -s https://api.github.com/repos/KunalSin9h/git-commit/releases/latest | grep "tag_name" | cut -d '"' -f 4)
 
 install_env=COMMIT_INSTALL
 bin_env=\$$install_env/bin
@@ -89,7 +89,7 @@ fi
 curl -fsSL --fail --location --output "$sh" "$commit_uri" ||
   error "Failed to download commit from \"$commit_uri\""
 
-gum spin --spinner dot --title "Downloading commit..." --spinner.foreground="80" -- sleep 5  && echo -e "commit version $LATEST_RELEASE downloaded. ${Cyan}https://github.com/KunalSin9h/commit${Color_Off}"
+gum spin --spinner dot --title "Downloading commit..." --spinner.foreground="80" -- sleep 5  && echo -e "commit version $LATEST_RELEASE downloaded. ${Cyan}https://github.com/KunalSin9h/git-commit${Color_Off}"
 
 gum spin --spinner dot --title "Setting Up..." --spinner.foreground="80" -- sleep 3
 
