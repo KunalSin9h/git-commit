@@ -64,11 +64,6 @@ export PATH="$COMMIT_INSTALL/bin:$PATH"
 yay -S git-commit
 ```
 
-### Docker (Linux x64)
-```bash
-docker pull kunalsin9h/commit
-```
-
 ## Usage
 ```bash
 $ commit -h
