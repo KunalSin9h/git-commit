@@ -50,7 +50,7 @@ go install github.com/charmbracelet/gum@latest
 
 ### macOS x64 & Silicon, Linux x64, Windows Subsystem for Linux
 ```bash
-curl -s https://kunalsin9h.dev/commit | bash
+curl -s https://kunalsin9h.com/commit | bash
 ```
 
 After Installing, add the following to your `.bashrc` file
