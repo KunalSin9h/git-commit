@@ -65,7 +65,14 @@ bold_success █▄▄ █▄█ █░▀░█ █░▀░█ █ �
 bold_success
 
 echo -e "${Yellow}Commit${Color_Off} helps in better git experience and maintain proper commit messages."
-echo -e "Commit uses gum for styling prompts, ${Magenta}make sure you have installed gum${Color_Off} before proceeding. ${Cyan}https://github.com/charmbracelet/gum#installation${Color_Off}"
+
+if ! [ -x "$(command -v gum)" ]; then
+    echo ""
+    echo >&2 -e "${Red}Error${Color_Off}: ${Bold_White}gum${Color_Off} is not installed."
+    echo >&2 -e "Commit uses gum for styling prompts, ${Magenta}make sure you have installed gum${Color_Off} before proceeding. ${Cyan}https://github.com/charmbracelet/gum#installation${Color_Off}"
+    exit 1
+fi
+
 echo
 info "Installing commit..."
 
